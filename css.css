@@ -1,0 +1,58 @@
+body {
+  background-color: #efefef;
+}
+
+div, p {
+  font-family: "Helvetica Neue", Helvetica, Georgia, Arial, Sans-Serif;
+  font-weight: normal;
+  line-height: 25px;
+}
+
+#wrapper {
+  margin: 20px auto;
+  width: 800px;
+}
+
+#image {
+  text-align: center;
+}
+
+#flags {
+  width: 450px;
+  margin: 0 auto;
+  padding: 7px;
+}
+
+#flags > a {
+  padding: 3px;
+}
+
+#text {
+  width: 500px;
+  margin: 0 auto 40px;
+}
+
+img#splash {
+  -moz-border-radius: 0px;
+  border-radius: 0px;
+  -moz-box-shadow: 0px 10px 10px #888;
+  -webkit-box-shadow: 0px 10px 10px #888;
+  box-shadow: 0px 10px 10px #888;
+}
+
+a, a:link, a:visited, a:hover {
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+}
+
+h1 {
+  font-size: 22px;
+  letter-spacing: -2px;
+  text-shadow: #555 2px 2px 3px;
+  text-transform: uppercase;
+  color: #fff;
+  font-family: "Helvetica Neue", Helvetica, Georgia, Arial, Sans-Serif;
+}
+
+/* vim: set ts=2 sw=2 et: */
