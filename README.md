@@ -10,6 +10,27 @@ The translations are made with available translations tools like [Babel Fish](ht
 
 I don't think there's any need to add more translations at this time.
 
+## Docker
+
+The included `Dockerfile` makes it possible to host the web page in a docker container. To run `det-blev-ingne-cd.com` in docker, build the container. Note that a copy of the certificates defined in `nginx.conf` must be present in `./certificates` (which is not included in the repository).
+```
+$ docker build -t det-blev-ingen-cd .
+```
+
+And start it (`-d` for detatched).
+```
+$ docker run --name det-blev-ingen-cd det-blev-ingen-cd -d
+```
+
+Example to test that it's working with `curl`.
+```
+$ DBIC_IP=$(docker inspect -f "{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}" det-blev-ingen-cd) \
+  curl -L https://det-blev-ingen-cd.com --resolve det-blev-ingen-cd.com:443:$DBIC_IP \
+  | head -n1
+
+HTTP/1.1 200 OK
+```
+
 ## Encryption
 The site uses [Let's encrypt](https://letsencrypt.org) to provide SSL.
 
