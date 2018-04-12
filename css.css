@@ -40,6 +40,13 @@ img#splash {
   box-shadow: 0px 10px 10px #888;
 }
 
+#github-ribbon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: 0;
+}
+
 a, a:link, a:visited, a:hover {
   text-decoration: none;
   border: none;

@@ -6,7 +6,7 @@ I do not have any copyright or knowledge about copyrights regarding the news art
 I do not have any copyright or knowledge about copyrights regarding the flag images.
 
 ## Translations
-The translations are made with available translations tools like [Babel Fish](https://en.wikipedia.org/wiki/Babel_Fish_(website)) in 2004 except the danish version which was emaild to me at christmas 2012.
+The translations are made with available translations tools like [Babel Fish](https://en.wikipedia.org/wiki/Babel_Fish_(website)) in 2004 except the danish version which was emailed to me at christmas 2012.
 
 I don't think there's any need to add more translations at this time.
 
@@ -17,7 +17,7 @@ The included `Dockerfile` makes it possible to host the web page in a docker con
 $ docker build -t det-blev-ingen-cd .
 ```
 
-And start it (`-d` for detatched).
+And start it (`-d` for detached).
 ```
 $ docker run --name det-blev-ingen-cd det-blev-ingen-cd -d
 ```
@@ -41,6 +41,6 @@ $ chmod +x certbot-auto
 ```
 And generate certificates.
 ```
-$ ./certbot-auto certonly --standalone --debug -d det-blev-ingen-cd.com -d www.det-blev-ingen-cd.com
+$ ./certbot-auto certonly --nginx --debug -d det-blev-ingen-cd.com -d www.det-blev-ingen-cd.com
 ```
-To renew certificates, just run ```certbot-auto renew```.
+To renew certificates, just run ```certbot-auto renew --nginx --debug```.
