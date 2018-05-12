@@ -67,6 +67,7 @@ function switchLanguage(lang) {
   var text = languageMap[lang]; 
   $('#lead').text(text.lead);
   $('#full').text(text.full);
+  $('img').prop('alt', text.lead);
 }
 
 // vim: set ts=2 sw=2 et:
