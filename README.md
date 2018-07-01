@@ -6,6 +6,23 @@ I do not have any copyright or knowledge about copyrights regarding the news
 article or the image within it. I do not have any copyright or knowledge about
 copyrights regarding the flag images.
 
+## TODO
+* Add `preventDefault` to flag links to avoid scrolling
+* Creat `init` function to set default language
+** Make said `init` function read URL to start with a language
+* Update `Dockerfile` to support `elm-make`
+
+## Compiling
+Since 2018 the page is written in [elm](http://elm-lang.org) which requires
+compilation. [Install](https://guide.elm-lang.org/install.html) `elm-make` and
+compile the source code into `dbic.js` which is the file included in the
+`index.html`.
+
+```
+$ npm install -g elm
+$ elm-make Main.elm --output dbic.js
+```
+
 ## Translations
 The translations are made with available translations tools like
 [Babel Fish](https://en.wikipedia.org/wiki/Babel_Fish_(website)) in 2004 except

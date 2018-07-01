@@ -1,18 +1,32 @@
 certificates
+dbic.js
 
-# Created by https://www.gitignore.io/api/vim
+# Created by https://www.gitignore.io/api/vim,elm
+
+### Elm ###
+# elm-package generated files
+elm-stuff
+# elm-repl generated files
+repl-temp-*
 
 ### Vim ###
-# swap
-.sw[a-p]
-.*.sw[a-p]
-# session
+# Swap
+[._]*.s[a-v][a-z]
+[._]*.sw[a-p]
+[._]s[a-rt-v][a-z]
+[._]ss[a-gi-z]
+[._]sw[a-p]
+
+# Session
 Session.vim
-# temporary
+
+# Temporary
 .netrwhist
 *~
-# auto-generated tag files
+# Auto-generated tag files
 tags
+# Persistent undo
+[._]*.un~
 
 
-# End of https://www.gitignore.io/api/vim
+# End of https://www.gitignore.io/api/vim,elm
