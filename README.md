@@ -7,9 +7,6 @@ article or the image within it. I do not have any copyright or knowledge about
 copyrights regarding the flag images.
 
 ## TODO
-* Add `preventDefault` to flag links to avoid scrolling
-* Creat `init` function to set default language
-** Make said `init` function read URL to start with a language
 * Update `Dockerfile` to support `elm-make`
 
 ## Compiling

@@ -3,15 +3,16 @@ module Main exposing (..)
 import Dict exposing (get)
 import Html exposing (Html, a, div, figure, figcaption, img, strong, span, text)
 import Html.Attributes exposing (alt, href, id, src)
-import Html.Events exposing (onClick)
+import Navigation
+import String.Extra exposing (rightOf)
 
 
 main =
-    Html.program
+    Navigation.program UrlChange
         { init = init
         , view = view
         , update = update
-        , subscriptions = subscriptions
+        , subscriptions = (\_ -> Sub.none)
         }
 
 
@@ -30,15 +31,15 @@ addLanguage lead full =
     Language lead full
 
 
-accessLang : Maybe Language -> Language
-accessLang l =
+accessLanguage : Maybe Language -> Language
+accessLanguage l =
     case l of
         Just language ->
             language
 
         Nothing ->
             Dict.get "se" languages
-                |> accessLang
+                |> accessLanguage
 
 
 languages =
@@ -89,15 +90,9 @@ model =
     { lang = "" }
 
 
-init : ( Model, Cmd Msg )
-
-
-
--- TODO: Read language from URL
-
-
-init =
-    ( Model "se", Cmd.none )
+init : Navigation.Location -> ( Model, Cmd Msg )
+init location =
+    ( Model (rightOf "#" location.hash), Cmd.none )
 
 
 
@@ -105,19 +100,14 @@ init =
 
 
 type Msg
-    = Change String
+    = UrlChange Navigation.Location
 
 
 update : Msg -> Model -> ( Model, Cmd msg )
 update msg model =
     case msg of
-        Change newLang ->
-            ( { model | lang = newLang }, Cmd.none )
-
-
-subscriptions : Model -> Sub Msg
-subscriptions model =
-    Sub.batch []
+        UrlChange location ->
+            ( { model | lang = rightOf "#" location.hash }, Cmd.none )
 
 
 
@@ -129,7 +119,7 @@ view model =
     let
         currentLang =
             Dict.get model.lang languages
-                |> accessLang
+                |> accessLanguage
     in
         div [ id "wrapper" ]
             [ a [ href "https://github.com/bombsimon/det-blev-ingen-cd.com" ]
@@ -156,7 +146,6 @@ view model =
                     , span [ id "full" ] [ text currentLang.full ]
                     ]
                 ]
-            , div [] [ text model.lang ]
             ]
 
 
@@ -168,5 +157,5 @@ splashImage source =
 flagLink : String -> Html Msg
 flagLink lang =
     a [ id lang, href ("#" ++ lang) ]
-        [ img [ src ("flags/" ++ lang ++ ".png"), onClick (Change lang) ] []
+        [ img [ src ("flags/" ++ lang ++ ".png") ] []
         ]
