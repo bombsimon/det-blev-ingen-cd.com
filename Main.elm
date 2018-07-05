@@ -7,10 +7,11 @@ import Html.Events exposing (onClick)
 
 
 main =
-    Html.beginnerProgram
-        { model = model
+    Html.program
+        { init = init
         , view = view
         , update = update
+        , subscriptions = subscriptions
         }
 
 
@@ -88,6 +89,17 @@ model =
     { lang = "" }
 
 
+init : ( Model, Cmd Msg )
+
+
+
+-- TODO: Read language from URL
+
+
+init =
+    ( Model "se", Cmd.none )
+
+
 
 -- UPDATE
 
@@ -96,11 +108,16 @@ type Msg
     = Change String
 
 
-update : Msg -> Model -> Model
+update : Msg -> Model -> ( Model, Cmd msg )
 update msg model =
     case msg of
         Change newLang ->
-            { model | lang = newLang }
+            ( { model | lang = newLang }, Cmd.none )
+
+
+subscriptions : Model -> Sub Msg
+subscriptions model =
+    Sub.batch []
 
 
 
@@ -139,6 +156,7 @@ view model =
                     , span [ id "full" ] [ text currentLang.full ]
                     ]
                 ]
+            , div [] [ text model.lang ]
             ]
 
 
