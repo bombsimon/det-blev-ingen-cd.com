@@ -6,9 +6,6 @@ I do not have any copyright or knowledge about copyrights regarding the news
 article or the image within it. I do not have any copyright or knowledge about
 copyrights regarding the flag images.
 
-## TODO
-* Update `Dockerfile` to support `elm-make`
-
 ## Compiling
 Since 2018 the page is written in [elm](http://elm-lang.org) which requires
 compilation. [Install](https://guide.elm-lang.org/install.html) `elm-make` and
@@ -39,13 +36,23 @@ $ docker build -t det-blev-ingen-cd .
 
 And start it (`-d` for detached).
 ```
-$ docker run --name det-blev-ingen-cd det-blev-ingen-cd -d
+$ docker run -d --name det-blev-ingen-cd det-blev-ingen-cd
 ```
 
-Example to test that it's working with `curl`.
+Example to test that it's working with `curl`. This will probably not work
+with macOS since we cannot access the container that way.
 ```
 $ DBIC_IP=$(docker inspect -f "{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}" det-blev-ingen-cd) \
-curl -L https://det-blev-ingen-cd.com --resolve det-blev-ingen-cd.com:443:$DBIC_IP | head -n1
+curl -sI https://det-blev-ingen-cd.com --resolve det-blev-ingen-cd.com:443:$DBIC_IP | head -n1
+
+HTTP/1.1 200 OK
+```
+
+**macOS example**
+Map and expose SSL port to the host machine.
+```
+$ docker run -d --name det-blev-ingen-cd -p 443:443 det-blev-ingen-cd
+$ curl -sI sttps://det-blev-ingen-cd.com --resolve det-blev-ingen-cd.com:443:127.0.0.1
 
 HTTP/1.1 200 OK
 ```
