@@ -49,10 +49,11 @@ HTTP/1.1 200 OK
 ```
 
 **macOS example**
+
 Map and expose SSL port to the host machine.
 ```
 $ docker run -d --name det-blev-ingen-cd -p 443:443 det-blev-ingen-cd
-$ curl -sI sttps://det-blev-ingen-cd.com --resolve det-blev-ingen-cd.com:443:127.0.0.1
+$ curl -sI https://det-blev-ingen-cd.com --resolve det-blev-ingen-cd.com:443:127.0.0.1 | head -n1
 
 HTTP/1.1 200 OK
 ```
