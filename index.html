@@ -14,7 +14,24 @@
 </head>
 
 <body>
+  <div id="wrapper">
+    <a href="https://github.com/bombsimon/det-blev-ingen-cd.com">
+      <img id="github-ribbon" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub">
+    </a>
+    <figure>
+      <img src="splash.jpg" id="splash" alt="Det blev ingen cd.">
+      <div id="flags"><small style="font-style: italic;">To enable translations, please enable JavaScript.</small></div>
+      <figcaption id="text">
+        <strong id="lead">Det blev ingen cd.</strong>
+        <span id="full">Några 15-åringar från Dommarhagsskolan tänkte kolla in cd-skivor under lunchrasten. Men affären de gick till hade stängt. Från vänster står Alfredo Pettersson, Richard Knöös, Tommy Carlberg, Mattias Persson och Max Malmström.</span>
+      </figcaption>
+    </figure>
+  </div>
+
   <script>
+    // Remove content and re-render with Elm if JavaScript is enabled
+    document.getElementById("wrapper").outerHTML = "";
+
     Elm.Main.fullscreen();
   </script>
 </body>
