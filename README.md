@@ -27,7 +27,7 @@ I don't think there's any need to add more translations at this time.
 ## Docker
 
 The included `Dockerfile` makes it possible to host the web page in a docker
-container. To run `det-blev-ingne-cd.com` in docker, build the container. Note
+container. To run `det-blev-ingen-cd.com` in docker, build the container. Note
 that a copy of the certificates defined in `nginx.conf` must be present in
 `./certificates` (which is not included in the repository).
 ```
