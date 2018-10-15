@@ -47,32 +47,32 @@ languages =
         [ ( "se"
           , addLanguage
                 "Det blev ingen cd."
-                "Några 15-åringar från Dommarhagsskolan tänkte kolla in cd-skivor under lunchrasten. Men affären de gick till hade stängt. Från vänster står Alfredo Pettersson, Richard Knöös, Tommy Carlberg, Mattias Persson och Max Malmström."
+                "Några 15-åringar från Domarhagsskolan tänkte kolla in cd-skivor under lunchrasten. Men affären de gick till hade stängt. Från vänster står Alfredo Pettersson, Richard Knöös, Tommy Carlberg, Mattias Persson och Max Malmström."
           )
         , ( "dk"
           , addLanguage
                 "Der blev ingen cd."
-                "Nogle 15-årige drenge fra Dommarhagsskolen tænkte at se på nogle cd'er i frokostpausen. Men butikken de gik til var lukket. Fra venstre står Alfredo Pettersson, Richard Knöos, Tommy Carlberg, Mattias Persson og Max Malmström."
+                "Nogle 15-årige drenge fra Domarhagsskolen tænkte at se på nogle cd'er i frokostpausen. Men butikken de gik til var lukket. Fra venstre står Alfredo Pettersson, Richard Knöos, Tommy Carlberg, Mattias Persson og Max Malmström."
           )
         , ( "us"
           , addLanguage
                 "They didn't get any cd."
-                "A few 15 year old boys from Dommarhagsskolan were going to check out CD's during the lunch break. But the store they went to was closed. Standing from the left; Alfredo Pettersson, Richard Knöös, Tommy Carlberg, Mattias Persson and Max Malmström."
+                "A few 15 year old boys from Domarhagsskolan were going to check out CD's during the lunch break. But the store they went to was closed. Standing from the left; Alfredo Pettersson, Richard Knöös, Tommy Carlberg, Mattias Persson and Max Malmström."
           )
         , ( "de"
           , addLanguage
                 "Sie erhielten kein cd."
-                "Einige 15 jahre alte jungen von Dommarhagsskolan waren im begriff, aus CD's während der mittagspause zu überprüfen. Aber der speicher gingen sie zu waren geschlossen. Stehen vom links; Alfredo Pettersson, Richard Knöös, Tommy Carlberg, Mattias Persson und Max Malmström."
+                "Einige 15 jahre alte jungen von Domarhagsskolan waren im begriff, aus CD's während der mittagspause zu überprüfen. Aber der speicher gingen sie zu waren geschlossen. Stehen vom links; Alfredo Pettersson, Richard Knöös, Tommy Carlberg, Mattias Persson und Max Malmström."
           )
         , ( "fr"
           , addLanguage
                 "Ils n'ont obtenu aucun cd."
-                "Quelques 15 années de garçons de Dommarhagsskolan allaient vérifier CD's pendant la pause de midi. Mais le magasin elles sont allées à étaient fermées. Se tenir de la gauche ; Alfredo Pettersson, Richard Knöös, Tommy Carlberg, Mattias Persson, Max Malmström."
+                "Quelques 15 années de garçons de Domarhagsskolan allaient vérifier CD's pendant la pause de midi. Mais le magasin elles sont allées à étaient fermées. Se tenir de la gauche ; Alfredo Pettersson, Richard Knöös, Tommy Carlberg, Mattias Persson, Max Malmström."
           )
         , ( "es"
           , addLanguage
                 "No consiguieron ningún cd."
-                "Algunos 15 años de viejos muchachos de Dommarhagsskolan iban a comprobar fuera de CD's durante la hora de la almuerzo. Pero el almacén fueron a eran cerrados. El estar parado de la izquierda; Alfredo Pettersson, Richard Knöös, Tommy Carlberg, Mattias Persson y Max Malmström."
+                "Algunos 15 años de viejos muchachos de Domarhagsskolan iban a comprobar fuera de CD's durante la hora de la almuerzo. Pero el almacén fueron a eran cerrados. El estar parado de la izquierda; Alfredo Pettersson, Richard Knöös, Tommy Carlberg, Mattias Persson y Max Malmström."
           )
         ]
 
