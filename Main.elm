@@ -178,6 +178,26 @@ view model =
                     ]
                     []
                 ]
+            , div [ id "promo" ]
+                [ a [ href "https://www.facebook.com/detblevingencd/" ]
+                    [ img
+                        [ id "fb-banner"
+                        , src "dbic_fb_banner.png"
+                        , alt "Documentary!"
+                        ]
+                        []
+                    ]
+                , div [ id "promo-links" ]
+                    [ a [ href "https://www.facebook.com/watch/?v=476987502838650" ]
+                        [ text "Trailer" ]
+                    , a [ href "https://www.facebook.com/events/471051633657641/" ]
+                        [ text "Sthlm" ]
+                    , a [ href "https://www.facebook.com/events/2306265739616283/" ]
+                        [ text "Gbg" ]
+                    , a [ href "https://www.facebook.com/events/339391883395009/" ]
+                        [ text "Malmö" ]
+                    ]
+                ]
             , figure []
                 [ splashImage "splash.jpg"
                 , div [ id "flags" ]
