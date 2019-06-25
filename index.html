@@ -30,9 +30,8 @@
 
   <script>
     // Remove content and re-render with Elm if JavaScript is enabled
-    document.getElementById("wrapper").outerHTML = "";
-
-    Elm.Main.fullscreen();
+    var wrapper = document.getElementById("wrapper");
+    Elm.Main.init({ node: wrapper });
   </script>
 </body>
 </html>
