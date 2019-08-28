@@ -99,6 +99,8 @@ me pay for the domain and hosting for this site for 15 years at this point. When
 I heard that there was going to be a documentary I did the obvious thing and
 contributed to the project and bought tickets as soon as the relea
 
+![documentary](dbic_fb_banner.png)
+
 * [Trailer 1](https://youtu.be/PHMH3GBJ3NE)
 * [Trailer 2](https://youtu.be/u8cEz-UYpik)
 * [Facebook group](https://www.facebook.com/detblevingencd/)

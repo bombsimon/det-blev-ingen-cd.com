@@ -7,6 +7,8 @@ import Html exposing (Html, a, div, figcaption, figure, img, span, strong, text)
 import Html.Attributes exposing (alt, href, id, src)
 import String.Extra exposing (clean, rightOf)
 import Url
+import Url.Parser as Parser
+import Url.Parser.Query as Query
 
 
 main : Program () Model Msg
@@ -122,6 +124,7 @@ languages =
 
 type alias Model =
     { lang : String
+    , hd : Bool
     , key : Nav.Key
     , url : Url.Url
     }
@@ -129,7 +132,38 @@ type alias Model =
 
 init : () -> Url.Url -> Nav.Key -> ( Model, Cmd Msg )
 init flags url key =
-    ( Model (rightOf "#" (Url.toString url)) key url, Cmd.none )
+    let
+        language =
+            rightOf "#" (Url.toString url)
+
+        hd =
+            isHD <| url
+    in
+    ( Model language hd key url, Cmd.none )
+
+
+isHD : Url.Url -> Bool
+isHD url =
+    let
+        parsedQueryString =
+            Parser.parse (Parser.query queryString) <| stripPath <| url
+    in
+    case parsedQueryString of
+        Just (Just v) ->
+            v
+
+        _ ->
+            False
+
+
+queryString : Query.Parser (Maybe Bool)
+queryString =
+    Query.enum "hd" (Dict.fromList [ ( "true", True ), ( "false", False ) ])
+
+
+stripPath : Url.Url -> Url.Url
+stripPath url =
+    { url | path = "" }
 
 
 
@@ -153,7 +187,14 @@ update msg model =
                     ( model, Nav.load href )
 
         UrlChanged url ->
-            ( { model | lang = rightOf "#" (Url.toString url), url = url }, Cmd.none )
+            let
+                lang =
+                    rightOf "#" (Url.toString url)
+
+                hd =
+                    isHD <| url
+            in
+            ( { model | lang = lang, hd = hd, url = url }, Cmd.none )
 
 
 
@@ -163,6 +204,14 @@ update msg model =
 view : Model -> Browser.Document Msg
 view model =
     let
+        splashImagePath =
+            case model.hd of
+                True ->
+                    "splash_hd.jpg"
+
+                False ->
+                    "splash.jpg"
+
         currentLang =
             Dict.get model.lang languages
                 |> accessLanguage
@@ -178,28 +227,16 @@ view model =
                     ]
                     []
                 ]
-            , div [ id "promo" ]
-                [ a [ href "https://www.facebook.com/detblevingencd/" ]
-                    [ img
-                        [ id "fb-banner"
-                        , src "dbic_fb_banner.png"
-                        , alt "Documentary!"
-                        ]
-                        []
-                    ]
-                , div [ id "promo-links" ]
-                    [ a [ href "https://www.facebook.com/watch/?v=476987502838650" ]
-                        [ text "Trailer" ]
-                    , a [ href "https://www.facebook.com/events/471051633657641/" ]
-                        [ text "Sthlm" ]
-                    , a [ href "https://www.facebook.com/events/2306265739616283/" ]
-                        [ text "Gbg" ]
-                    , a [ href "https://www.facebook.com/events/339391883395009/" ]
-                        [ text "Malmö" ]
+            , div [ id "top-space" ]
+                [ div [ id "top-space-links" ]
+                    [ a [ href ("?hd=true#" ++ model.lang) ]
+                        [ text "HD" ]
+                    , a [ href ("?hd=false#" ++ model.lang) ]
+                        [ text "NOHD" ]
                     ]
                 ]
             , figure []
-                [ splashImage "splash.jpg"
+                [ splashImage splashImagePath
                 , div [ id "flags" ]
                     [ flagLink "se"
                     , flagLink "dk"

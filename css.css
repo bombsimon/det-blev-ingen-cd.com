@@ -16,6 +16,10 @@ a:focus {
   outline: 0;
 }
 
+img {
+  max-width: 460px;
+}
+
 #wrapper {
   margin: 20px auto;
   max-width: 460px;
@@ -44,24 +48,25 @@ a:focus {
   border: 0;
 }
 
-#promo {
+#top-space {
   text-align: center;
   font-size: 12px;
   padding-bottom: 10px;
 }
 
-#promo-links > a {
+#top-space-links > a {
   margin: 20px;
   color: #000;
   text-decoration: none;
   font-weight: bold;
 }
 
-#promo-links > a:hover {
-  color: #fcd403;
+#top-space-links > a:hover {
+  color: #ddd;
+  text-decoration: underline;
 }
 
-#fb-banner {
+#top-space-banner {
   width: 100%;
 }
 
