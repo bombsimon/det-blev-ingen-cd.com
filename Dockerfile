@@ -1,4 +1,12 @@
-FROM wunsh/alpine-elm:latest as build-img
+FROM alpine:latest as build-img
+
+RUN apk add --update curl gzip
+
+RUN curl -L -o \
+    elm.gz https://github.com/elm/compiler/releases/download/0.19.1/binary-for-linux-64-bit.gz && \
+    gunzip elm.gz && \
+    chmod +x elm && \
+    mv elm /usr/local/bin/
 
 WORKDIR /compile
 
