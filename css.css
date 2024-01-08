@@ -41,13 +41,6 @@ img {
   box-shadow: 0px 10px 10px #888;
 }
 
-#github-ribbon {
-  position: absolute;
-  top: 0;
-  right: 0;
-  border: 0;
-}
-
 #top-space {
   text-align: center;
   font-size: 12px;
@@ -68,6 +61,10 @@ img {
 
 #top-space-banner {
   width: 100%;
+}
+
+.github-fork-ribbon:before {
+  background-color: #000 !important;
 }
 
 /* vim: set ts=2 sw=2 et: */

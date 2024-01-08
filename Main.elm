@@ -1,10 +1,10 @@
-module Main exposing (Language, Model, Msg(..), accessLanguage, addLanguage, flagLink, init, languages, main, splashImage, update, view)
+module Main exposing (Language, Model, Msg(..), accessLanguage, flagLink, init, languages, main, update, view)
 
 import Browser
 import Browser.Navigation as Nav
 import Dict exposing (get)
 import Html exposing (Html, a, div, figcaption, figure, img, span, strong, text)
-import Html.Attributes exposing (alt, href, id, src)
+import Html.Attributes exposing (alt, attribute, class, href, id, src, title)
 import String.Extra exposing (clean, rightOf)
 import Url
 import Url.Parser as Parser
@@ -33,11 +33,6 @@ type alias Language =
     }
 
 
-addLanguage : String -> String -> Language
-addLanguage lead full =
-    Language lead full
-
-
 accessLanguage : Maybe Language -> Language
 accessLanguage l =
     case l of
@@ -52,7 +47,7 @@ accessLanguage l =
 languages =
     Dict.fromList
         [ ( "se"
-          , addLanguage
+          , Language
                 "Det blev ingen cd."
                 ("""Några 15-åringar från Domarhagsskolan tänkte kolla in
                 cd-skivor under lunchrasten. Men affären de gick till hade
@@ -62,7 +57,7 @@ languages =
                 )
           )
         , ( "dk"
-          , addLanguage
+          , Language
                 "Der blev ingen cd."
                 ("""Nogle 15-årige drenge fra Domarhagsskolen tænkte at se på
                 nogle cd'er i frokostpausen. Men butikken de gik til var lukket.
@@ -72,7 +67,7 @@ languages =
                 )
           )
         , ( "us"
-          , addLanguage
+          , Language
                 "They didn't get any cd."
                 ("""A few 15 year old boys from Domarhagsskolan were going to
                 check out CD's during the lunch break. But the store they went
@@ -83,7 +78,7 @@ languages =
                 )
           )
         , ( "de"
-          , addLanguage
+          , Language
                 "Sie erhielten kein cd."
                 ("""Einige 15 jahre alte jungen von Domarhagsskolan waren im
                 begriff, aus CD's während der mittagspause zu überprüfen. Aber
@@ -94,7 +89,7 @@ languages =
                 )
           )
         , ( "fr"
-          , addLanguage
+          , Language
                 "Ils n'ont obtenu aucun cd."
                 ("""Quelques 15 années de garçons de Domarhagsskolan allaient
                 vérifier CD's pendant la pause de midi. Mais le magasin elles
@@ -105,7 +100,7 @@ languages =
                 )
           )
         , ( "es"
-          , addLanguage
+          , Language
                 "No consiguieron ningún cd."
                 ("""Algunos 15 años de viejos muchachos de Domarhagsskolan iban a
                 comprobar fuera de CD's durante la hora de la almuerzo. Pero el
@@ -205,12 +200,11 @@ view : Model -> Browser.Document Msg
 view model =
     let
         splashImagePath =
-            case model.hd of
-                True ->
-                    "splash_hd.jpg"
+            if model.hd then
+                "splash_hd.jpg"
 
-                False ->
-                    "splash.jpg"
+            else
+                "splash.jpg"
 
         currentLang =
             Dict.get model.lang languages
@@ -219,14 +213,13 @@ view model =
     { title = currentLang.lead
     , body =
         [ div [ id "wrapper" ]
-            [ a [ href "https://github.com/bombsimon/det-blev-ingen-cd.com" ]
-                [ img
-                    [ id "github-ribbon"
-                    , src "https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"
-                    , alt "Fork me on GitHub!"
-                    ]
-                    []
+            [ a
+                [ class "github-fork-ribbon"
+                , href "https://github.com/bombsimon/det-blev-ingen-cd.com"
+                , attribute "data-ribbon" "Fork me on GitHub"
+                , title "Fork me on GitHub!"
                 ]
+                [ text "Fork me on GitHub!" ]
             , div [ id "top-space" ]
                 [ div [ id "top-space-links" ]
                     [ a [ href ("?hd=true#" ++ model.lang) ]
@@ -236,7 +229,7 @@ view model =
                     ]
                 ]
             , figure []
-                [ splashImage splashImagePath
+                [ img [ src splashImagePath, id "splash", alt "" ] []
                 , div [ id "flags" ]
                     [ flagLink "se"
                     , flagLink "dk"
@@ -254,11 +247,6 @@ view model =
             ]
         ]
     }
-
-
-splashImage : String -> Html Msg
-splashImage source =
-    img [ src source, id "splash", alt "" ] []
 
 
 flagLink : String -> Html Msg
